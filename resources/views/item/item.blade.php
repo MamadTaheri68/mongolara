@@ -30,8 +30,9 @@
                                         <td>{{ $item->type }}</td>
                                         <td>{{ $item->qty }}</td>
                                         <td>
-                                            <a href="">Edit</a>
-                                            <a href="">Delete</a>
+                                            <a href="{{ route('editItem',['id' => $item->id]) }}">Edit</a>
+                                            <a href="{{ route('deleteItem',['id' => $item->id]) }}"
+                                                onclick="return confirm('Are you sure to delete?')">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

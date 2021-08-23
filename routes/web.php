@@ -27,3 +27,8 @@ Route::get('/item', [ItemController::class, 'index'])->name('item');
 
 Route::post('/item/saveItem', [ItemController::class, 'ItemSave'])->name('saveItem');
 
+Route::get('/editItem/{id}', [ItemController::class, 'Edit'])->name('editItem');
+
+Route::post('/updateItem', [ItemController::class, 'Update'])->name('updateItem');
+
+Route::get('/deleteItem/{id}', [ItemController::class, 'Delete'])->name('deleteItem');
