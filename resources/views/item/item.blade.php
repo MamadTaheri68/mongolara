@@ -9,7 +9,7 @@
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
                             data-target="#exampleModal">New</button>
                     </div>
-
+                    <p class="text-success">{{ Session::get('message') }}</p>
                     <div class="card-body">
                         <table class="table table-hover">
                             <thead>
@@ -22,16 +22,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>
-                                        <a href="">Edit</a>
-                                        <a href="">Delete</a>
-                                    </td>
-                                </tr>
+                                @php($i=1)
+                                @foreach ($allItem as $item)
+                                    <tr>
+                                        <th scope="row">{{ $i++ }}</th>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->type }}</td>
+                                        <td>{{ $item->qty }}</td>
+                                        <td>
+                                            <a href="">Edit</a>
+                                            <a href="">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -52,8 +56,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="POST" action="{{ route('saveItem') }}">
 
+                        @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" name="name" class="form-control" placeholder="Enter email">
@@ -73,7 +78,7 @@
                         {{-- </form> --}}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
                 </form>
             </div>

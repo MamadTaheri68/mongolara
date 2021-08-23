@@ -24,3 +24,6 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/item', [ItemController::class, 'index'])->name('item');
+
+Route::post('/item/saveItem', [ItemController::class, 'ItemSave'])->name('saveItem');
+
