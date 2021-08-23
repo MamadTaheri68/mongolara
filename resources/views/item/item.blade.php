@@ -9,7 +9,11 @@
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
                             data-target="#exampleModal">New</button>
                     </div>
-                    <p class="text-success">{{ Session::get('message') }}</p>
+                    @if (session('success_message'))
+                        <div class="alert alert-success">
+                            {{ session('success_message') }}
+                        </div>
+                    @endif
                     <div class="card-body">
                         <table class="table table-hover">
                             <thead>
@@ -32,7 +36,7 @@
                                         <td>
                                             <a href="{{ route('editItem',['id' => $item->id]) }}">Edit</a>
                                             <a href="{{ route('deleteItem',['id' => $item->id]) }}"
-                                                onclick="return confirm('Are you sure to delete?')">Delete</a>
+                                                class="delete-confirm">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

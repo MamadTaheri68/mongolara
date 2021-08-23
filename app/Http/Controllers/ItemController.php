@@ -30,7 +30,7 @@ class ItemController extends Controller
 
             $item->save();
 
-            return redirect('item')->with('message', 'Item added successfully');
+            return redirect('item')->with('toast_success', 'Item added successfully');
     }
 
     public function Edit($id)
@@ -50,7 +50,7 @@ class ItemController extends Controller
 
         $item->Update();
 
-        return redirect('item')->with('message', 'Item Updated successfully');
+        return redirect('item')->with('toast_success', 'Item Updated successfully');
     }
 
     public function Delete($id)
@@ -58,6 +58,6 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $item->delete();
 
-        return redirect('item')->with('message', 'Item Deleted successfully');
+        return redirect('item')->with('success', 'Item Deleted successfully');
     }
 }
